@@ -41,7 +41,7 @@ function calcMonthlyPayment({
 
 /** Get form values, calculate, format to 2 decimal places, and display. */
 
-function getFormValuesAndDisplayResults() {
+function getFormValuesAndDisplayResults(): void {
   const { amount, years, rate } = getFormValues();
   const payment = calcMonthlyPayment({ amount, years, rate });
   resultHistory.push({ amount, years, rate, payment });
@@ -50,7 +50,7 @@ function getFormValuesAndDisplayResults() {
 
 /** Set initial form values and show initial results. Called at app start. */
 
-function setInitialValues() {
+function setInitialValues(): void {
   $amountInput.value = "10000";
   $yearsInput.value = "10";
   $rateInput.value = "4.5";
@@ -58,8 +58,9 @@ function setInitialValues() {
 }
 
 /** Start: set form defaults & display; attach form submit event listener. */
+// TODO: we should have output type
 
-function start() {
+function start(): void {
   setInitialValues();
 
   $calcForm.addEventListener("submit", function (evt) {
@@ -67,3 +68,5 @@ function start() {
     getFormValuesAndDisplayResults();
   });
 }
+
+export { start };
